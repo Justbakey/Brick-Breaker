@@ -1,0 +1,23 @@
+/* centers the canvas on the page */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+canvas{
+    border: 2px solid #333;
+    background-color: #000;
+}
