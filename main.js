@@ -7,21 +7,45 @@ const canvas = document.getElementById('gameCanvas');
 
  const ctx = canvas.getContext('2d');
 
-    
+    const keys = {
+        left: false,
+        right: false
+    };
 
 const paddle =new Paddle(canvas.width, canvas.height);
 
 const ball = new Ball(canvas.width, canvas.height);
 
+window.addEventListener("gamepadconnected", (event) => {
+    console.log("Gamepad connected:", event.gamepad);
+});
+
+
+function handleGamepadInput() {
+    const gamepad = navigator.getGamepads()[0]; // Get the first connected gamepad
+    if (gamepad) {
+        const axis = gamepad.axes[0]; // Use the left stick's horizontal axis
+        if (axis < -0.5) {
+            return "left"
+        } else if (axis > 0.5) {
+            return "right"
+        } else {
+            
+        }
+    }
+    return null
+}
+
+
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
 
         case 'ArrowLeft':
-        paddle.moveLeft();
+        keys.left = true
         break;
 
         case 'ArrowRight':
-        paddle.moveRight();
+        keys.right = true
         break;
     
     }
@@ -30,11 +54,32 @@ document.addEventListener('keyup', (event) => {
     switch(event.key){
 
     case 'ArrowLeft':
+        keys.left = false
+         break;
+
     case 'ArrowRight':
-    paddle.stop();
+       keys.right = false
     break;
     }
 });
+
+function handleInput () {
+const gamepadInput = handleGamepadInput();
+
+if (gamepadInput === "left" || keys.left) {
+    paddle.moveLeft();
+
+}   else if (gamepadInput === "right" || keys.right){
+        paddle.moveRight();
+    } else {
+        paddle.stop ();
+    }
+  
+}
+
+
+
+
 const rows =5;
 const cols =9;
 const brickwidth = 75;
@@ -62,6 +107,7 @@ for (let row = 0; row < rows; row++) {
 window.score = { value: 0 }; 
 
 function gameLoop() {
+    handleInput();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     paddle.update();
