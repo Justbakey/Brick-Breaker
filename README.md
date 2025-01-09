@@ -1,5 +1,5 @@
 # Brick-Breaker
-An HTML5 Canvas-based Brick Breaker game created as a learning project https://yourusername.github.io/Brick-Breaker/
+An HTML5 Canvas-based Brick Breaker game created as a learning project
 ## About
 A fun and interactive HTML5 Canvas-based Brick Breaker game! Play it in your browser.
 
