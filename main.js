@@ -77,7 +77,7 @@ document.addEventListener('keydown', (event) => {
     
         case 'r':
         case 'R':
-          restartgame(); 
+          if (isgameover) restartgame(); 
         break
     }   
 });
