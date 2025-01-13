@@ -170,7 +170,7 @@ ctx.fillText("Game Over",canvas.width / 2,canvas.height / 2 -20 );
 
 ctx.font = '20px Arial';
 ctx.fillStyle = '#FFFFFF';
-ctx.fillText ("press r to Restart",canvas.width / 2, canvas.height / 2 + 20);
+ctx.fillText ("press r or A to Restart",canvas.width / 2, canvas.height / 2 + 20);
 ctx.fillText (`Score ${score.value}`,canvas.width / 2, canvas.height / 2 + 0);
 }
 
