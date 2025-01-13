@@ -20,10 +20,12 @@ export default class Ball {
         this.visible = true;
     }
 
-    update(paddle, bricks) {
+    update(paddle, bricks, handleLifeLoss)   {
     if (!this.visible) return;
         this.position.x += this.speed.x /1.5; 
         this.position.y += this.speed.y /1.5;
+     
+      
 
       if (this.position.x  < this.radius || this.position.x >this.canvasWidth -this.radius) {
         this .speed.x = -this.speed.x;
@@ -48,11 +50,14 @@ export default class Ball {
         }
         
      } 
-
-     if (this.position.y > this.canvasHeight){
-        console.log("Game Over")
-        setTimeout(() => this.reset(), 1000);
-     }
+     if(this.position.y > this.canvasHeight) {
+      handleLifeLoss();
+      return;
+    }
+     
+        
+      
+     
      let collisionDetected = false
      bricks.forEach(row => {
         row.forEach(brick => {
